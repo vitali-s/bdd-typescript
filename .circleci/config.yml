@@ -7,17 +7,18 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: selenium/node-chrome
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
+      - image: selenium/standalone-chrome
+      - image: circleci/node
 
     working_directory: ~/repo
 
     steps:
       - checkout
+
+      # Update npm
+      - run:
+          name: update-npm 
+          command: 'sudo npm install -g npm@latest'
 
       # Download and cache dependencies
       - restore_cache:
