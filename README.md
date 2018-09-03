@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/vitali-shcharbin-epam/bdd-typescript/tree/master.svg?style=shield)](https://circleci.com/gh/vitali-shcharbin-epam/bdd-typescript/tree/master)
+
 # bdd-typescript
 BDD + TypeScript + Selenium example of automation
 
