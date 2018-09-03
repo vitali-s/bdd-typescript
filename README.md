@@ -24,6 +24,8 @@ views/
     view area/
         view.view.ts
 
+<img src="design-framework.svg">
+
 ## References
 
 * Cucumber - https://docs.cucumber.io/
