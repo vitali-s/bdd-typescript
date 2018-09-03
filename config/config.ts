@@ -19,7 +19,7 @@ export const config: Config = {
 
     cucumberOpts: {
         compiler: "ts:ts-node/register",
-        format: "json:./reports/report.json",
+        format: "json:./report.json",
         require: ["../../build/steps/**/*.js", "../../build/views/**/*.js"],
         strict: true,
     },
