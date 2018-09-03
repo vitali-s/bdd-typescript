@@ -9,4 +9,4 @@ const cucumberReporterOptions = {
 
 export function generateReport() {
     reporter.generate(cucumberReporterOptions);
-};
+}

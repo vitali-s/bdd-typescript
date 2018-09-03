@@ -1,3 +1,3 @@
 export const config = {
-    displayTimeout: 5000
+    displayTimeout: 5000,
 };

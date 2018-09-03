@@ -1,6 +1,6 @@
-import { ElementFinder, element, by } from 'protractor';
-import { waitForPresence } from '../../framework/waiter';
-import { View } from '../../framework/view';
+import { by, element, ElementFinder } from "protractor";
+import { View } from "../../framework/view";
+import { waitForPresence } from "../../framework/waiter";
 
 export class SignInView implements View {
 
@@ -8,15 +8,15 @@ export class SignInView implements View {
     private password: ElementFinder;
     private signInButton: ElementFinder;
 
-    async assertDisplayed(): Promise<SignInView> {
-        await waitForPresence(by.css('.login'));
+    public async assertDisplayed(): Promise<SignInView> {
+        await waitForPresence(by.css(".login"));
 
         return Promise.resolve(this);
     }
 
-    async setEmail(email): Promise<SignInView> {
+    public async setEmail(email): Promise<SignInView> {
         if (this.email == null) {
-            this.email = element(by.id('MainContent_login_UserName'));
+            this.email = element(by.id("MainContent_login_UserName"));
         }
 
         await waitForPresence(this.email);
@@ -26,9 +26,9 @@ export class SignInView implements View {
         return Promise.resolve(this);
     }
 
-    async setPassword(password: string): Promise<SignInView> {
+    public async setPassword(password: string): Promise<SignInView> {
         if (this.password == null) {
-            this.password = element(by.id('MainContent_login_txtPassword'));
+            this.password = element(by.id("MainContent_login_txtPassword"));
         }
 
         await waitForPresence(this.password);
@@ -38,9 +38,9 @@ export class SignInView implements View {
         return Promise.resolve(this);
     }
 
-    async clickSignIn(): Promise<SignInView> {
+    public async clickSignIn(): Promise<SignInView> {
         if (this.signInButton == null) {
-            this.signInButton = element(by.id('MainContent_login_btnLogin'));
+            this.signInButton = element(by.id("MainContent_login_btnLogin"));
         }
 
         await waitForPresence(this.signInButton);

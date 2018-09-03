@@ -16,12 +16,12 @@ export const config: Config = {
 
     capabilities: {
         browserName: "chrome",
-        "chromeOptions": {
-            "args": [
+        chromeOptions: {
+            args: [
                 "--headless",
-                "--disable-gpu"
-            ]
-          }
+                "--disable-gpu",
+            ],
+        },
     },
 
     framework: "custom",
@@ -36,7 +36,7 @@ export const config: Config = {
         compiler: "ts:ts-node/register",
         format: "json:./reports/report.json",
         require: ["../../build/steps/**/*.js", "../../build/views/**/*.js"],
-        strict: true
+        strict: true,
     },
 
     onComplete: () => {

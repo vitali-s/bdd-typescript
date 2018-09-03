@@ -1,8 +1,8 @@
-import { element, browser, ExpectedConditions, ElementFinder } from 'protractor';
-import { Locator } from 'selenium-webdriver';
-import { config } from './config';
+import { browser, element, ElementFinder, ExpectedConditions } from "protractor";
+import { Locator } from "selenium-webdriver";
+import { config } from "./config";
 
-export async function waitForPresence(selector: Locator): Promise<void>
+export async function waitForPresence(selector: Locator): Promise<void>;
 export async function waitForPresence(selector: ElementFinder): Promise<void> {
     await browser.wait(ExpectedConditions.presenceOf(selector instanceof ElementFinder ? selector : element(selector)), config.displayTimeout);
 }
