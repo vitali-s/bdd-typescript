@@ -22,4 +22,9 @@ views/
     view area/
         view.view.ts
 
+## References
+
+* Cucumber - https://docs.cucumber.io/
+* Protractor - https://www.protractortest.org/#/
+
 
