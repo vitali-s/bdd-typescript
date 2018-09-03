@@ -19,7 +19,8 @@
                 "timeEnd",
                 "trace"
             ]
-        }
+        },
+        "interface-name" : [true, "never-prefix"]
     },
     "jsRules": {
         "max-line-length": {
