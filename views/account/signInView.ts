@@ -1,51 +1,61 @@
-import { by, element, ElementFinder } from "protractor";
+import { expect } from "chai";
+import { browser, by, element, ElementFinder } from "protractor";
 import { View } from "../../framework/view";
-import { waitForPresence } from "../../framework/waiter";
+import { waitForPresence, waitForVisibility } from "../../framework/waiter";
 
 export class SignInView implements View {
-
-    private email: ElementFinder;
-    private password: ElementFinder;
-    private signInButton: ElementFinder;
+    private loginContainer = element(by.css(".login"));
+    private email = element(by.css("#MainContent_login_UserName"));
+    private password = element(by.css("#MainContent_login_txtPassword"));
+    private signInButton = element(by.css("#MainContent_login_btnLogin"));
+    private nextButton = element(by.css("#MainContent_login_btnNext"));
+    private error = element(by.css("#SystemMessageContent_statusMessage"));
+    private errorMessage = element(by.css("#SystemMessageContent_statusMessage li"));
 
     public async assertDisplayed(): Promise<SignInView> {
-        await waitForPresence(by.css(".login"));
+        await waitForPresence(this.loginContainer);
 
         return Promise.resolve(this);
     }
 
     public async setEmail(email): Promise<SignInView> {
-        if (this.email == null) {
-            this.email = element(by.id("MainContent_login_UserName"));
-        }
-
         await waitForPresence(this.email);
-
-        this.email.sendKeys(email);
+        await this.email.sendKeys(email);
 
         return Promise.resolve(this);
     }
 
     public async setPassword(password: string): Promise<SignInView> {
-        if (this.password == null) {
-            this.password = element(by.id("MainContent_login_txtPassword"));
-        }
-
         await waitForPresence(this.password);
-
-        this.password.sendKeys(password);
+        await this.password.sendKeys(password);
 
         return Promise.resolve(this);
     }
 
     public async clickSignIn(): Promise<SignInView> {
-        if (this.signInButton == null) {
-            this.signInButton = element(by.id("MainContent_login_btnLogin"));
+        await waitForVisibility(this.signInButton);
+        await this.signInButton.click();
+
+        return Promise.resolve(this);
+    }
+
+    public async clickNext(): Promise<SignInView> {
+        const isDisplayed = await this.nextButton.isDisplayed();
+
+        // click next only if next button is displayed
+        if (isDisplayed) {
+            await this.nextButton.click();
         }
 
-        await waitForPresence(this.signInButton);
+        return Promise.resolve(this);
+    }
 
-        await this.signInButton.click();
+    public async assertError(expectedMessage: string): Promise<SignInView> {
+        await waitForVisibility(this.error);
+
+        const errorMessage = await this.errorMessage.getText();
+
+        expect(errorMessage).to.equal(expectedMessage);
 
         return Promise.resolve(this);
     }

@@ -1,5 +1,5 @@
 import { View } from "./view";
 
-export function view<TView extends View>(type: { new (): TView }): TView {
-    return new type();
+export function view<TView extends View>(type: { new (): TView }): Promise<TView> {
+    return Promise.resolve(new type());
 }

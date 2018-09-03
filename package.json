@@ -26,6 +26,7 @@
     "protractor": "^5.4.0",
     "protractor-cucumber-framework": "^6.0.0",
     "selenium-webdriver": "^4.0.0-alpha.1",
+    "ts-node": "^7.0.1",
     "typescript": "^3.0.3"
   }
 }
